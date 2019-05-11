@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>org.apache</groupId>
+    <artifactId>howTomcatWorks</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>howTomcatWorks</name>
+
+    <description>howTomcatWorks的代码</description>
+    <properties>
+        <netty.version>4.1.6.Final</netty.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+        <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+        <mybatis-generator-maven-plugin.version>1.3.5</mybatis-generator-maven-plugin.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <lombok.version>1.18.2</lombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <!-- <version></version>-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/servlet.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-util</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/tomcat-util.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/xercesImpl.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xmlParserAPIs</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/xmlParserAPIs.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/tomcat/naming-resources -->
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>naming-resources</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/naming-resources.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-beanutils.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-collections.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-digester.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-logging.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-daemon</groupId>
+            <artifactId>commons-daemon</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-daemon.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-modeler</groupId>
+            <artifactId>commons-modeler</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/commons-modeler.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>naming-common</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/naming-common.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>tomcat</groupId>
+            <artifactId>naming-factory</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/naming-factory.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.security</groupId>
+            <artifactId>jaas</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jaas.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>jakarta-regexp</groupId>
+            <artifactId>jakarta-regexp</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jakarta-regexp-1.2.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ingrian.security</groupId>
+            <artifactId>jcert</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jcert.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cocoon</groupId>
+            <artifactId>cocoon-jnet</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jnet.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jglobus</groupId>
+            <artifactId>jsse</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jsse.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mx4j</groupId>
+            <artifactId>mx4j</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/mx4j.jar</systemPath>
+        </dependency>
+
+
+
+
+
+
+    </dependencies>
+
+
+    <build>
+        <finalName>tomcat</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <verbose>true</verbose>
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 解决资源文件的编码问题 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+
+            <!-- 分给线 start -->
+            <!--   &lt;!&ndash; 打包jar文件时，配置manifest文件，加入lib包的jar依赖 &ndash;&gt;-->
+            <!--  <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-jar-plugin</artifactId>
+                  <version>${maven-jar-plugin.version}</version>
+                  <configuration>
+                      <archive>
+                          <manifest>
+                              <addClasspath>true</addClasspath>
+                              <classpathPrefix>lib/</classpathPrefix>
+                              <mainClass>com.lyh.game.baccara.start.GameStart</mainClass>
+                          </manifest>
+                        &lt;!&ndash;  &lt;!&ndash; 添加第三方的jar
+                          <manifestEntries>
+                              <Class-Path>lib/class-util-1.0.jar lib/pool-executor-1.0.jar</Class-Path>
+                          </manifestEntries> &ndash;&gt;
+                      </archive>
+                  </configuration>
+              </plugin>-->
+            <!-- &lt;!&ndash; 拷贝依赖的jar包到lib目录 &ndash;&gt;-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- &lt;!&ndash; 自定义打zip包 &ndash;&gt;-->
+            <!--  <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-assembly-plugin</artifactId>
+                  <version>${maven-assembly-plugin.version}</version>
+                  <configuration>
+                      <descriptors>
+                          <descriptor>src/main/resources/assembly.xml</descriptor>
+                      </descriptors>
+                  </configuration>
+                  <executions>
+                      <execution>
+                          <id>make-assembly</id>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>single</goal>
+                          </goals>
+                      </execution>
+                  </executions>
+              </plugin>-->
+
+            <!-- &lt;!&ndash; copy文件 &ndash;&gt;-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+
+                            <tasks>
+                                <echo message="copy  profile ......"/>
+                                <!-- <mkdir dir="${project.build.directory}/res"/>-->
+                                <!--  &lt;!&ndash; ${project.build.directory}这个是tartget目录 &ndash;&gt;
+                                  &lt;!&ndash; 这句话的意思是将file 里面的内容复制到 &ndash;&gt;
+                                  &lt;!&ndash;<copy overwrite="true" tofile="${project.build.directory}/res/logback.xml"
+                                        file="${project.basedir}/../res/logback.xml"/>&ndash;&gt;
+                                  &lt;!&ndash; copy 文件夹 &ndash;&gt;-->
+                                <!--   <copy todir="${project.build.directory}/res/">
+                                       <fileset dir="${project.basedir}/../res">
+                                           <include name="*.properties" />
+                                           <include name="*.xml" />
+                                           <include name="*.txt"/>
+                                           <include name="game-key.dat"/>
+                                       </fileset>
+                                   </copy>
+   -->
+                                <echo message="copy  profile done ......"/>
+
+
+                                <echo message="delete jar start"/>
+                                <delete file="${project.build.directory}/lib/netty-buffer-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-codec-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-codec-http-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-codec-socks-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-common-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-handler-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-handler-proxy-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-resolver-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-transport-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-transport-native-epoll-4.1.16.Final.jar"/>
+                                <delete file="${project.build.directory}/lib/netty-transport-native-unix-common-4.1.16.Final.jar"/>
+                                <echo message="delete profile end"/>
+
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--分割线 end-->
+        </plugins>
+        <!-- 打包过滤  resources部分的作用是，根据maven打包-P参数执行的属性-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>rebel.xml</exclude>
+                    <exclude>assembly.xml</exclude>
+                    <exclude>generatorConfig.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <!-- 默认goal -->
+        <defaultGoal>package</defaultGoal>
+    </build>
+
+
+</project>
